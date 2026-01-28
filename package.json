@@ -3,14 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev",
+    "build": "vite build",
+    "dev": "vite dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "typecheck": "react-router typegen && tsc"
   },
-  "homepage": "https://cppdacl.github.io/react-portfolio/",
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@react-router/node": "7.12.0",

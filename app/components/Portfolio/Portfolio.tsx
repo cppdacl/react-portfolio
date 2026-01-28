@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Portfolio.css";
 
 interface Project {
@@ -45,23 +45,22 @@ const PROJECTS: Project[] = [
   },
 ];
 
+const GRADIENTS: Record<string, string> = {
+  Nomikai:
+    "linear-gradient(145deg, rgba(14, 29, 51, 0.15), rgba(62, 17, 80, 0.15))",
+  Prism:
+    "linear-gradient(160deg, rgba(67, 20, 85, 0.15), rgba(37, 11, 78, 0.15))",
+  Arcane:
+    "linear-gradient(170deg, rgba(76, 11, 82, 0.15), rgba(7, 3, 27, 0.15))",
+};
+
 export default function Portfolio() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   const [modalProject, setModalProject] = useState<Project | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [activeBgProject, setActiveBgProject] = useState<string | null>(null);
-
-  const colors: Record<string, string> = {
-    Nomikai: "rgba(131, 80, 214, 0.05)",
-    Prism: "rgba(46, 156, 156, 0.05)",
-    Arcane: "rgba(255, 8, 0, 0.05)",
-  };
-
-  const hoverColors: Record<string, string> = {
-    Nomikai: "rgba(105, 13, 253, 0.03)",
-    Prism: "rgba(64, 76, 175, 0.03)",
-    Arcane: "rgba(0, 132, 255, 0.03)",
-  };
+  const [activeGradient, setActiveGradient] = useState<string>(
+    GRADIENTS["Nomikai"],
+  );
 
   const openModal = (project: Project) => {
     setModalProject(project);
@@ -73,13 +72,17 @@ export default function Portfolio() {
     setTimeout(() => setModalProject(null), 300);
   };
 
+  const handleTitleClick = (project: Project) => {
+    setActiveGradient(GRADIENTS[project.name]);
+  };
+
   return (
     <section
       id="portfolio"
       className="section"
       style={{
-        backgroundColor: activeBgProject ? colors[activeBgProject] : undefined,
-        transition: "background-color 0.6s ease",
+        background: activeGradient,
+        transition: "background 1.2s ease",
       }}
     >
       <div className="container">
@@ -96,10 +99,6 @@ export default function Portfolio() {
                     hoveredProject === project.name
                       ? "translateY(-8px)"
                       : "translateY(0)",
-                  backgroundColor:
-                    hoveredProject === project.name
-                      ? hoverColors[project.name]
-                      : "#12121f",
                   boxShadow:
                     hoveredProject === project.name
                       ? "0 18px 40px rgba(0,0,0,0.45)"
@@ -114,7 +113,7 @@ export default function Portfolio() {
                 <h5
                   className="fw-bold"
                   style={{ cursor: "pointer" }}
-                  onClick={() => setActiveBgProject(project.name)}
+                  onClick={() => handleTitleClick(project)}
                 >
                   {project.name}
                 </h5>

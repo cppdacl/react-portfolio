@@ -7,4 +7,4 @@ A simple, responsive portfolio web page that includes a navigation bar, a portfo
 
 **Note:** This project is not for production use. This is a school project.
 
-### This project is deployed at [Github Pages.](https://cppdacl.github.io/html-css-jsx/)
+### This project has no Github Pages deployment due to unfamiliarity with the react-router v7.

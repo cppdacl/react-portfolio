@@ -1,13 +1,13 @@
+import Navbar from "~/components/Navbar";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Cappu's Portfolio" },
+    { name: "description", content: "Cappu's React Portfolio" },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <div></div>;
 }

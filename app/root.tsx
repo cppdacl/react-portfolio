@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -62,14 +64,20 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
+    <main className="container pt-5">
+      <div className="alert alert-danger" role="alert">
+        <h1 className="alert-heading mb-3">{message}</h1>
+        <p className="mb-3">{details}</p>
+
+        {stack && (
+          <>
+            <hr />
+            <pre className="bg-light p-3 rounded overflow-auto">
+              <code>{stack}</code>
+            </pre>
+          </>
+        )}
+      </div>
     </main>
   );
 }

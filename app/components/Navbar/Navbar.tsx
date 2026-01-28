@@ -1,70 +1,78 @@
 import React, { useEffect, useState } from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
 
-export default function Navbar() {
+const SECTIONS = ["home", "portfolio", "contact"];
+
+export default function AppNavbar() {
+  const [activeSection, setActiveSection] = useState("home");
   const [bgOpacity, setBgOpacity] = useState(0);
-  const [shadowOpacity, setShadowOpacity] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const maxScroll = 100;
 
-      setBgOpacity(Math.min(1, scrollY / maxScroll));
-      setShadowOpacity(Math.min(0.25, (scrollY / maxScroll) * 0.25));
+      const maxScroll = 450;
+      const opacity = Math.min(1, scrollY / maxScroll);
+      setBgOpacity(opacity);
+
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? scrollY / docHeight : 0;
+      const numSections = SECTIONS.length;
+      const sectionIndex = Math.min(
+        numSections - 1,
+        Math.floor(scrollPercent * numSections),
+      );
+      setActiveSection(SECTIONS[sectionIndex]);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (sectionId: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveSection(sectionId);
+    }
+  };
+
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark fixed-top"
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      fixed="top"
+      className="custom-navbar"
       style={{
         background: `rgba(12, 11, 20, ${bgOpacity})`,
-        boxShadow: `0 4px 20px rgba(0, 0, 0, ${shadowOpacity})`,
-        transition: "background 0.3s, box-shadow 0.3s",
+        boxShadow: `0 4px 20px rgba(0,0,0,${bgOpacity * 0.3})`,
+        transition: "background 0.3s ease, box-shadow 0.3s ease",
       }}
     >
-      <div className="container">
-        <a className="navbar-brand fw-bold" href="#home">
+      <Container>
+        <Navbar.Brand href="#home" onClick={handleNavClick("home")}>
           {">_<"}
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul className="navbar-nav gap-3">
-            <li className="nav-item">
-              <a className="nav-link active" href="#home">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#portfolio">
-                Portfolio
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contact">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto gap-3">
+            {SECTIONS.map((section) => (
+              <Nav.Link
+                key={section}
+                href={`#${section}`}
+                active={activeSection === section}
+                onClick={handleNavClick(section)}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </Nav.Link>
+            ))}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }

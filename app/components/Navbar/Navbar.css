@@ -1,29 +1,30 @@
-
-.navbar {
+.custom-navbar {
     background: rgba(12, 11, 20, 0.7);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar-brand {
+.custom-navbar .navbar-brand {
     font-size: 1.6rem;
     letter-spacing: 0.5px;
+    color: #fff;
+    transition: color 0.3s ease;
 }
 
-.nav-link {
+.custom-navbar .nav-link {
     color: #ccc !important;
     font-weight: 500;
     position: relative;
     transition: all 0.3s ease;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
     color: #fff !important;
 }
 
-.nav-link::after {
+.custom-navbar .nav-link::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -31,11 +32,77 @@
     width: 0;
     height: 2px;
     background: #690dfd;
-    transition: all 0.25s ease;
+    transition: width 0.25s ease;
     transform: translateX(-50%);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.custom-navbar .nav-link:hover::after,
+.custom-navbar .nav-link.active::after {
     width: 100%;
+}
+
+.custom-navbar .navbar-toggler {
+    border: 2px solid transparent;
+    background: transparent;
+    outline: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    height: 35px;
+    margin-top: 5px;
+}
+
+.custom-navbar .navbar-toggler:hover,
+.custom-navbar .navbar-toggler:focus {
+    border-color: #690dfd;
+    box-shadow: 0 0 12px #690dfd;
+    transform: translateY(-2px);
+}
+
+.custom-navbar .navbar-toggler:active {
+    box-shadow: 0 0 12px #690dfd;
+    transform: translateY(0);
+}
+
+.custom-navbar .navbar-toggler-icon {
+    background-image: none;
+    width: 24px;
+    height: 2px;
+    background-color: #fff;
+    position: relative;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.custom-navbar .navbar-toggler-icon::before,
+.custom-navbar .navbar-toggler-icon::after {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.custom-navbar .navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.custom-navbar .navbar-toggler-icon::after {
+    top: 8px;
+}
+
+.custom-navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+    background-color: transparent;
+}
+
+.custom-navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.custom-navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
 }

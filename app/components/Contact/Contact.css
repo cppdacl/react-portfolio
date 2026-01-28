@@ -45,8 +45,9 @@
 }
 
 .contact-btn:hover {
-    box-shadow: 0 0 15px #690dfd;
-    transform: translateY(-2px);
+    box-shadow: 0 0 15px #690dfd !important;
+    transform: translateY(-2px) !important;
+    background: #690dfd !important;
 }
 
 .toast-container {

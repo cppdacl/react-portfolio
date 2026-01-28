@@ -3,6 +3,7 @@ import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import Home from "~/components/Home";
 import Portfolio from "~/components/Portfolio";
+import Contact from "~/components/Contact";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -17,6 +18,7 @@ export default function Main() {
       <Navbar />
       <Home />
       <Portfolio />
+      <Contact />
       <Footer />
     </div>
   );

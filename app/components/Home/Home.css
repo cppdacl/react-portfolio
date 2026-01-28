@@ -1,0 +1,38 @@
+
+#home {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('bg.jpg') center/cover no-repeat;
+    opacity: 0.3;
+    z-index: 0;
+    filter: brightness(0.5);
+}
+
+#home .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.btn-neon {
+    background: #1a1b2c;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-neon:hover {
+    box-shadow: 0 0 12px #690dfd;
+    transform: translateY(-2px);
+}

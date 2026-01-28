@@ -14,3 +14,11 @@ body {
     background: #3d208b;
     color: #fff;
 }
+
+.text-muted {
+    color: rgb(76 81 115 / 75%) !important;
+}
+
+.section {
+    padding: 80px 0;
+}

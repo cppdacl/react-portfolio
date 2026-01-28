@@ -1,0 +1,95 @@
+
+.section#portfolio {
+    scroll-margin-top: 25vh; 
+    scroll-behavior: smooth;
+}
+
+.portfolio-card {
+    background: #12121f;
+    border-radius: 12px;
+    padding: 20px;
+    color: #e5e5e5;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+
+.portfolio-card h5 {
+    margin-bottom: 6px;
+}
+
+.portfolio-card p {
+    font-size: 0.9rem;
+    color: #b0b0c2;
+}
+
+.portfolio-card {
+    position: relative;
+    background: #12121f;
+    border-radius: 12px;
+    padding: 20px;
+    color: #e5e5e5;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    background-color: rgb(16, 13, 26);
+    border-radius: 12px;
+    padding: 2px;
+}
+
+.project-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.tech-tags span {
+    background: #1c1a30;
+    color: #d7d7dc;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+.proj-action-btn {
+    display: inline-block;
+    margin-top: 12px;
+    background: #1a1b2c;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(105, 13, 253, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #690dfd;
+}
+
+.proj-action-btn:hover {
+    background: #2b2a40;
+    box-shadow: 0 6px 20px rgba(105, 13, 253, 0.6);
+    transform: translateY(-2px);
+    color: #fff;
+}

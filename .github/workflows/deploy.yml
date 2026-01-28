@@ -34,3 +34,4 @@ jobs:
         with:
           branch: gh-pages         # The branch to deploy to (GitHub Pages default)
           folder: build             # The folder (built site) to deploy
+          token: ${{ secrets.GITHUB_TOKEN }}
